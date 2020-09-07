@@ -1,0 +1,14 @@
+version: "2.3"
+
+services:
+  ngnix:
+    image: nginx:latest
+    entrypoint: nginx -g "daemon off;"
+    env_file:
+      - .env
+    ports:
+      - 8080:80
+    volumes:
+        - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+        - ${DATA_PATH}:/usr/share/nginx/html:ro
+    restart: always
