@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 var config={
     mode: 'development', // development  or  production
     entry:{
-        webindex:"./src/index" //入口文件
+        webindex:"./src/app" //入口文件
     },
     output:{//输出
         filename:"[name].js", //文件名
@@ -20,7 +20,8 @@ var config={
             template: './src/index.html',
             chunks: ["webindex"]
         })
-    ]
+    ],
+    node: { fs: 'empty' } // 解决er: cornerstoneWADOImageLoader.min.js Module not found: Error: Can't resolve 'fs'
 }
 
 module.exports=config; //导出配置， 使webpack读取
